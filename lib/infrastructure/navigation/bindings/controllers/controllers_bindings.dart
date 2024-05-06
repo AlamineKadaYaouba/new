@@ -1,0 +1,9 @@
+export 'package:genesis/infrastructure/navigation/bindings/controllers/dashboard.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/get_started.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/home.controller.binding.dart';
+export 'package:genesis/infrastructure/navigation/bindings/controllers/login.controller.binding.dart';
+export 'package:genesis/infrastructure/navigation/bindings/controllers/nav_bar.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/profile.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/roles_capacities.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/splash.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/user_list.controller.binding.dart'; 

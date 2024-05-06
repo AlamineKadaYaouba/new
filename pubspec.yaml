@@ -1,0 +1,46 @@
+name: genesis
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.2.4 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  qr_flutter: ^4.1.0
+  qr_code_scanner: ^1.0.1
+  flutter_iconly: ^1.0.2
+  get_cli: ^1.8.4
+  calendar_date_picker2: ^0.5.5
+  ionicons: ^0.2.2
+  geolocator: ^11.0.0
+  permission_handler: ^11.3.0
+  flutter_barcode_scanner: ^2.0.0
+  syncfusion_flutter_signaturepad: ^25.1.37
+  flutter_speed_dial: ^7.0.0
+  percent_indicator: ^4.2.2
+  carousel_slider: ^4.0.0
+
+
+  flutter: 
+    sdk: flutter
+  fl_chart: ^0.67.0
+  multi_select_flutter: ^4.1.3
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: circularStd
+      fonts:
+        - asset: assets/fonts/CircularStd-Book.ttf
+
