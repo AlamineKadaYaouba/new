@@ -148,7 +148,7 @@ class NavBarScreen extends GetView<NavBarController> {
               backgroundColor: Colors.cyan,
               label: 'Faire le point',
               labelStyle: const TextStyle(fontSize: 16.0),
-              onTap: () => Get.toNamed(Routes.USER_LIST),
+              onTap: () => Get.toNamed(Routes.DAILY_TASK),
             ),
           ],
         ),

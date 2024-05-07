@@ -71,5 +71,15 @@ class Nav {
       page: () => const UserListScreen(),
       binding: UserListControllerBinding(),
     ),
+    GetPage(
+      name: Routes.DETAIL_USER,
+      page: () => const DetailUserScreen(),
+      binding: DetailUserControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.DAILY_TASK,
+      page: () => const DailyTaskScreen(),
+      binding: DailyTaskControllerBinding(),
+    ),
   ];
 }

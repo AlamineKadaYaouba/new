@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genesis/App/app_sizes.dart';
 import 'package:genesis/infrastructure/theme/ThemeController.dart';
-
 import 'package:get/get.dart';
-
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
 

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -26,7 +27,32 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
+  RxList<DateTime?> selectedDate = [
+    DateTime.now(),
+  ].obs;
+
   void increment() => count.value++;
+
+  showCalendar(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Card(
+          margin: EdgeInsets.only(top: 200, bottom: 200, left: 10, right: 10),
+          child: SizedBox(
+            height: 400,
+            width: 350,
+            child: CalendarDatePicker2(
+              config: CalendarDatePicker2Config(
+                calendarType: CalendarDatePicker2Type.multi,
+              ),
+              value: selectedDate,
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   Future<Position?> getLocation() async {
     var status = await Permission.location.request();

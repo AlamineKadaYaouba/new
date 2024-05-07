@@ -5,6 +5,7 @@ class Routes {
   }
 
   static const DASHBOARD = '/dashboard';
+  static const DETAIL_USER = '/detail-user';
   static const GET_STARTED = '/get-started';
   static const HOME = '/home';
   static const LOGIN = '/login';
@@ -14,4 +15,5 @@ class Routes {
   static const SIGNIN = '/signin';
   static const SPLASH = '/splash';
   static const USER_LIST = '/user-list';
+  static const DAILY_TASK = '/daily-task';
 }

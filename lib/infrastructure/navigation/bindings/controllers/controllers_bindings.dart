@@ -1,4 +1,6 @@
+export 'package:genesis/infrastructure/navigation/bindings/controllers/daily_task.controller.binding.dart'; 
 export 'package:genesis/infrastructure/navigation/bindings/controllers/dashboard.controller.binding.dart'; 
+export 'package:genesis/infrastructure/navigation/bindings/controllers/detail_user.controller.binding.dart'; 
 export 'package:genesis/infrastructure/navigation/bindings/controllers/get_started.controller.binding.dart'; 
 export 'package:genesis/infrastructure/navigation/bindings/controllers/home.controller.binding.dart';
 export 'package:genesis/infrastructure/navigation/bindings/controllers/login.controller.binding.dart';

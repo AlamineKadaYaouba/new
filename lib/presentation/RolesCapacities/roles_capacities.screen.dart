@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:genesis/App/app_colors.dart';
@@ -8,6 +10,10 @@ import 'package:genesis/App/app_sizes.dart';
 import 'package:genesis/App/validator.dart';
 import 'package:genesis/Widgets/CListTile.dart';
 import 'package:genesis/Widgets/button.dart';
+import 'package:genesis/models/capacity/capacity_model.dart';
+import 'package:genesis/models/role/role_model.dart';
+import 'package:genesis/presentation/RolesCapacities/detail_capacity.dart';
+import 'package:genesis/presentation/RolesCapacities/detail_role.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import 'package:get/get.dart';
@@ -214,6 +220,26 @@ class RolesCapacitiesScreen extends GetView<RolesCapacitiesController> {
                                               IconlyLight.profile,
                                               color: AppColors.primary,
                                             ),
+                                            hintText: 'Intitulé de la capacité',
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      SizedBox(
+                                        child: TextFormField(
+                                          maxLines: 4,
+                                          controller:
+                                              roleController.roles.value,
+                                          validator: Validator.required(),
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              borderSide: const BorderSide(
+                                                color: AppColors.red,
+                                              ),
+                                            ),
+                                            label: const Text("Capacité"),
                                             hintText: 'Intitulé de la capacité',
                                           ),
                                         ),
@@ -454,8 +480,24 @@ class RolesCapacitiesScreen extends GetView<RolesCapacitiesController> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: ListTile(
                   title: Text("Role $index"),
-                  trailing: const Icon(Icons.arrow_forward_ios_sharp),
-                  onTap: () => null,
+                  trailing: IconButton(
+                    onPressed: () => showDisableRoleAlertDialog(
+                      context,
+                      Role(name: "Role $index"),
+                    ),
+                    icon: const Icon(
+                      Icons.lock,
+                      color: AppColors.red,
+                    ),
+                  ),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailRole(
+                        role: Role(name: "Role $index", level: "N+15"),
+                      ),
+                    ),
+                  ),
                 ),
               );
             },
@@ -483,12 +525,98 @@ class RolesCapacitiesScreen extends GetView<RolesCapacitiesController> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: ListTile(
                   title: Text("Capacité $index"),
-                  trailing: const Icon(Icons.arrow_forward_ios_sharp),
-                  onTap: () => null,
+                  trailing: IconButton(
+                    onPressed: () => showDisableCapacityAlertDialog(
+                      context,
+                      Capacity(name: "Capacité $index"),
+                    ),
+                    icon: const Icon(
+                      Icons.lock,
+                      color: AppColors.red,
+                    ),
+                  ),
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailCapacity(
+                        capacity: Capacity(
+                          name: "Capacité $index",
+                          description:
+                              "aaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzzeeeeeeeeeeeeeeeerrrrrrrrrrrrrtttttttttttyyyyyyyyyyyyy",
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               );
             },
           ),
+        );
+      },
+    );
+  }
+
+  showDisableRoleAlertDialog(BuildContext context, Role role) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            "Bloquer le rôle",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: AppColors.red),
+          ),
+          content: Text(
+            "Vous êtes sur le point de bloqué le rôle ${role.name}\n\nÊtes-vous sur de vouloir procéder a cette opération ?",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: AppSizes.title1),
+          ),
+          actions: [
+            FButton(
+              height: 40,
+              text: "Oui",
+              color: AppColors.red,
+              onPressed: () {},
+            ),
+            FButton(
+              height: 40,
+              text: "Nom",
+              onPressed: () => Get.back(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  showDisableCapacityAlertDialog(BuildContext context, Capacity capacity) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            "Bloquer la capcité",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: AppColors.red),
+          ),
+          content: Text(
+            "Vous êtes sur le point de bloqué la capacité ${capacity.name}\n\nÊtes-vous sur de vouloir procéder a cette opération ?",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: AppSizes.title1),
+          ),
+          actions: [
+            FButton(
+              height: 40,
+              text: "Oui",
+              color: AppColors.red,
+              onPressed: () {},
+            ),
+            FButton(
+              height: 40,
+              text: "Nom",
+              onPressed: () => Get.back(),
+            ),
+          ],
         );
       },
     );
