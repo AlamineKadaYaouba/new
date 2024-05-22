@@ -22,6 +22,8 @@ dependencies:
   percent_indicator: ^4.2.2
   carousel_slider: ^4.0.0
   glassmorphism: ^3.0.0
+  fluttertoast: ^8.0.8
+  skeletonizer: ^0.4.0
 
 
   flutter: 

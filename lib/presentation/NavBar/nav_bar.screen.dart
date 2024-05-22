@@ -21,7 +21,8 @@ class NavBarScreen extends GetView<NavBarController> {
     ThemeController themeController = Get.put(ThemeController());
     print(width);
     return Scaffold(
-      drawer: width < 700 ? myDrawer(navigationBarCotroller) : null,
+      drawer:
+          width < AppSizes.tablet2 ? myDrawer(navigationBarCotroller) : null,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,51 +49,25 @@ class NavBarScreen extends GetView<NavBarController> {
       ),
       body: Row(
         children: [
-          Expanded(
-              flex: AppSizes.width < 700 ? 0 : 1,
-              child: AppSizes.width < 700
+          Container(
+              // flex: AppSizes.width < AppSizes.tablet2 ? 0 : 1,
+              width: AppSizes.width < AppSizes.tablet1 ? 0 : 260,
+              child: AppSizes.width < AppSizes.tablet2
                   ? Container()
                   : myDrawer(navigationBarCotroller)),
           Expanded(
-            flex: 3,
+            flex: AppSizes.width < AppSizes.tablet2 ? 1 : 3,
             child: Obx(
               () => navigationBarCotroller.showPage(width),
             ),
           ),
         ],
       ),
-      // bottomNavigationBar: Obx(
-      //   () => BottomNavigationBar(
-      //     type: BottomNavigationBarType.fixed,
-      //     currentIndex: navigationBarCotroller.index.value,
-      //     onTap: (value) => navigationBarCotroller.setIndex(value),
-      //     items: const [
-      //       BottomNavigationBarItem(
-      //         icon: Icon(
-      //           IconlyBroken.home,
-      //         ),
-      //         label: 'Accueil',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(
-      //           IconlyBroken.location,
-      //         ),
-      //         label: 'Permission',
-      //       ),
-      //       BottomNavigationBarItem(
-      //         icon: Icon(
-      //           IconlyBroken.profile,
-      //         ),
-      //         label: 'Profile',
-      //       ),
-      //     ],
-      //   ),
-      // ),
 
       floatingActionButton: FloatingActionButton(
         child: SpeedDial(
           animatedIcon: AnimatedIcons.menu_close,
-          animatedIconTheme: IconThemeData(size: 22.0),
+          animatedIconTheme: const IconThemeData(size: 22.0),
           closeManually: false,
           curve: Curves.bounceIn,
           overlayColor: Colors.black,
@@ -108,7 +83,7 @@ class NavBarScreen extends GetView<NavBarController> {
               backgroundColor: Colors.blue,
               label: 'Scan',
               labelStyle: const TextStyle(fontSize: 16.0),
-              onTap: () => navigationBarCotroller.scanQr(),
+              onTap: () => navigationBarCotroller.scanQr(context),
             ),
             SpeedDialChild(
               child: const Icon(
@@ -206,7 +181,9 @@ class NavBarScreen extends GetView<NavBarController> {
                                 ? AppColors.white
                                 : null,
                             leading: const Icon(IconlyLight.activity),
-                            title: const Text("Dashboard"),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Dashboard"),
                             onTap: () => navigationBarCotroller.setIndex(1),
                           ),
                         ],
@@ -231,8 +208,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 2
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.activity),
-                            title: const Text("Gestion des présences"),
+                            leading: const Icon(Icons.qr_code_2_rounded),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Gestion des présences"),
                             onTap: () => navigationBarCotroller.setIndex(2),
                           ),
                         ],
@@ -257,8 +236,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 3
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.play),
-                            title: const Text("Point journalier"),
+                            leading: const Icon(IconlyLight.paper),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Point journalier"),
                             onTap: () => navigationBarCotroller.setIndex(3),
                           ),
                         ],
@@ -283,8 +264,11 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 4
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.volumeUp),
-                            title: const Text("Roles et capacités"),
+                            leading:
+                                const Icon(Icons.admin_panel_settings_outlined),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Roles et capacités"),
                             onTap: () => navigationBarCotroller.setIndex(4),
                           ),
                         ],
@@ -309,8 +293,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 5
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.volumeUp),
-                            title: const Text("Gestion des objectifs"),
+                            leading: const Icon(Icons.checklist_rounded),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Gestion des objectifs"),
                             onTap: () => navigationBarCotroller.setIndex(5),
                           ),
                         ],
@@ -335,8 +321,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 6
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.volumeUp),
-                            title: const Text("Mise en production"),
+                            leading: const Icon(IconlyLight.upload),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Mise en production"),
                             onTap: () => navigationBarCotroller.setIndex(6),
                           ),
                         ],
@@ -361,8 +349,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 7
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.bag),
-                            title: const Text("Gestion des permission"),
+                            leading: const Icon(IconlyLight.paperUpload),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Gestion des permission"),
                             onTap: () => navigationBarCotroller.setIndex(7),
                           ),
                         ],
@@ -387,8 +377,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 8
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.bag),
-                            title: const Text("Gestion des Incidents"),
+                            leading: const Icon(IconlyLight.closeSquare),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Gestion des Incidents"),
                             onTap: () => navigationBarCotroller.setIndex(8),
                           ),
                         ],
@@ -413,8 +405,10 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 9
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.volumeUp),
-                            title: const Text("Validation des procédures"),
+                            leading: const Icon(Icons.task_alt_outlined),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Validation des procédures"),
                             onTap: () => navigationBarCotroller.setIndex(9),
                           ),
                         ],
@@ -439,8 +433,11 @@ class NavBarScreen extends GetView<NavBarController> {
                             iconColor: navigationBarCotroller.index.value == 10
                                 ? AppColors.white
                                 : null,
-                            leading: const Icon(IconlyLight.paperDownload),
-                            title: const Text("Demande d'explication"),
+                            leading:
+                                const Icon(Icons.thumb_down_off_alt_rounded),
+                            title: Text(
+                                style: TextStyle(fontSize: AppSizes.title2),
+                                "Demande d'explication"),
                             onTap: () => navigationBarCotroller.setIndex(10),
                           ),
                         ],

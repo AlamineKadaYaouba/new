@@ -36,7 +36,7 @@ class AppThemes {
       elevation: 5,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 20,
+        fontSize: 16,
         color: AppColors.white,
       ),
     ),
@@ -103,8 +103,9 @@ class AppThemes {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: false,
-    drawerTheme:
-        const DrawerThemeData(backgroundColor: AppColors.backgroundDark),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: AppColors.backgroundDark,
+    ),
     cardTheme: const CardTheme(
       elevation: 4,
       color: AppColors.backgroundDark,
@@ -134,7 +135,7 @@ class AppThemes {
       elevation: 5,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w500,
-        fontSize: 20,
+        fontSize: 16,
         color: AppColors.white,
       ),
     ),

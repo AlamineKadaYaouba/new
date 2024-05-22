@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "task": "Faire les courses",
+  "description": "Acheter du pain, des fruits et des légumes",
+  "difficulty": 2,
+  "state": "En cours",
+  "time": "10:00",
+  "date": "2023-05-16"
+}

@@ -1,14 +1,9 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:genesis/App/app_colors.dart';
 import 'package:genesis/App/app_sizes.dart';
-import 'package:genesis/Widgets/CircularButtom.dart';
-import 'package:genesis/Widgets/button.dart';
-import 'package:genesis/infrastructure/theme/ThemeController.dart';
 
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 
 import 'controllers/home.controller.dart';
 
@@ -17,6 +12,8 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.put(HomeController());
+    double height = Get.height;
+    double width = Get.width;
     return Scaffold(
       body: Center(
         child: SizedBox(
@@ -37,58 +34,73 @@ class HomeScreen extends GetView<HomeController> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                Stack(
+                Wrap(
                   children: [
-                    SizedBox(
-                      height: 220,
-                      child: PieChart(
-                        PieChartData(
-                          sections: [
-                            PieChartSectionData(
-                              color: Colors.green,
-                              value: 40,
-                              title: "Présence \n 40%",
-                              radius: 100,
-                              titleStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 16),
-                            ),
-                            PieChartSectionData(
-                              color: Colors.blue,
-                              value: 30,
-                              title: 'retard \n 30%',
-                              radius: 100,
-                              titleStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 16),
-                            ),
-                            PieChartSectionData(
-                              color: Colors.red,
-                              value: 30,
-                              title: 'absences \n 30%',
-                              radius: 100,
-                              titleStyle: const TextStyle(
-                                  color: Colors.white, fontSize: 16),
-                            ),
-                          ],
+                    Card(
+                      child: Container(
+                        height: 240,
+                        width: width <= AppSizes.tablet1
+                            ? 380
+                            : width >= AppSizes.tablet1 &&
+                                    width <= AppSizes.tablet2
+                                ? (width - 30) / 2
+                                : (width - 30) / 3,
+                        margin: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: PieChart(
+                          PieChartData(
+                            sections: [
+                              PieChartSectionData(
+                                color: Colors.green,
+                                value: 40,
+                                title: "Présence \n 40%",
+                                radius: 100,
+                                titleStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                              PieChartSectionData(
+                                color: Colors.blue,
+                                value: 30,
+                                title: 'retard \n 30%',
+                                radius: 100,
+                                titleStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                              PieChartSectionData(
+                                color: Colors.red,
+                                value: 30,
+                                title: 'absences \n 30%',
+                                radius: 100,
+                                titleStyle: const TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Positioned(
-                      right: 0,
-                      // top: 10,
-                      child: CircularBottom(
-                        color: AppColors.primary,
-                        height: 47,
-                        width: 47,
-                        icon: const Icon(
-                          Icons.calendar_month,
-                          color: Colors.white,
-                          size: 27,
+                    // Obx(
+                    //   () =>
+                    Card(
+                      child: SizedBox(
+                        width: width <= AppSizes.tablet1
+                            ? 380
+                            : width >= AppSizes.tablet1 &&
+                                    width <= AppSizes.tablet2
+                                ? (width - 30) / 2
+                                : (width - 30) / 3,
+                        height: 260,
+                        child: CalendarDatePicker2(
+                          config: CalendarDatePicker2Config(
+                            currentDate: DateTime.now(),
+                            calendarType: CalendarDatePicker2Type.multi,
+                          ),
+                          value: homeController.selectedDate,
                         ),
-                        onPressed: () => homeController.showCalendar(context),
                       ),
-                    )
+                    ),
                   ],
                 ),
+                // ),
                 const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -144,18 +156,6 @@ class HomeScreen extends GetView<HomeController> {
                       ),
                     ),
                   ],
-                ),
-                Obx(
-                  () => SizedBox(
-                    height: 260,
-                    child: CalendarDatePicker2(
-                      config: CalendarDatePicker2Config(
-                        currentDate: DateTime.now(),
-                        calendarType: CalendarDatePicker2Type.multi,
-                      ),
-                      value: homeController.selectedDate,
-                    ),
-                  ),
                 ),
                 // Container(
                 //   child: SfSignaturePad(

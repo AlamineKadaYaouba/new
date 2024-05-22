@@ -1,7 +1,7 @@
 export 'package:genesis/presentation/NavBar/nav_bar.screen.dart';
 export 'package:genesis/presentation/RolesCapacities/roles_capacities.screen.dart';
 export 'package:genesis/presentation/Splash/splash.screen.dart';
-export 'package:genesis/presentation/dailyTask/daily_task.screen.dart';
+export 'package:genesis/presentation/dailyTask/add_daily_task.dart';
 export 'package:genesis/presentation/dashboard/dashboard.screen.dart';
 export 'package:genesis/presentation/detailUser/detail_user.screen.dart';
 export 'package:genesis/presentation/getStarted/get_started.screen.dart';

@@ -12,6 +12,8 @@ class DashboardScreen extends GetView<DashboardController> {
   const DashboardScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double height = Get.height;
+    double width = Get.width;
     return Scaffold(
       body: Center(
         child: SizedBox(
@@ -24,7 +26,11 @@ class DashboardScreen extends GetView<DashboardController> {
                 Card(
                   child: Container(
                     height: 220,
-                    width: 440,
+                    width: width <= AppSizes.tablet1
+                        ? 380
+                        : width >= AppSizes.tablet1 && width <= AppSizes.tablet2
+                            ? (width - 30) / 2
+                            : (width - 320) / 2,
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(
@@ -142,7 +148,11 @@ class DashboardScreen extends GetView<DashboardController> {
                 Card(
                   child: Container(
                     height: 220,
-                    width: 440,
+                    width: width <= AppSizes.tablet1
+                        ? 380
+                        : width >= AppSizes.tablet1 && width <= AppSizes.tablet2
+                            ? (width - 30) / 2
+                            : (width - 320) / 2,
                     padding: const EdgeInsets.all(5),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,7 +231,11 @@ class DashboardScreen extends GetView<DashboardController> {
                 Card(
                   child: Container(
                     height: 220,
-                    width: 440,
+                    width: width <= AppSizes.tablet1
+                        ? 380
+                        : width >= AppSizes.tablet1 && width <= AppSizes.tablet2
+                            ? (width - 30) / 2
+                            : (width - 320) / 2,
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +308,11 @@ class DashboardScreen extends GetView<DashboardController> {
                 Card(
                   child: Container(
                     height: 220,
-                    width: 440,
+                    width: width <= AppSizes.tablet1
+                        ? 380
+                        : width >= AppSizes.tablet1 && width <= AppSizes.tablet2
+                            ? (width - 30) / 2
+                            : (width - 320) / 2,
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

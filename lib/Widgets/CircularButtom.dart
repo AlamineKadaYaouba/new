@@ -12,6 +12,7 @@ class CircularBottom extends StatelessWidget {
     this.borderColor,
     this.height,
     this.width,
+    this.radius,
     this.border = false,
     this.elevation,
     required this.icon,
@@ -22,6 +23,7 @@ class CircularBottom extends StatelessWidget {
   final double? height;
   final double? width;
   final bool border;
+  final double? radius;
   final double? elevation;
   final Icon icon;
 
@@ -32,7 +34,8 @@ class CircularBottom extends StatelessWidget {
       () => themeContoller.currentTheme.value == AppThemes.lightTheme
           ? Container(
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                // shape: radius == null ? BoxShape.circle : BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(radius ?? 0),
                 color: color ?? Colors.black.withOpacity(0.2),
               ),
               height: height ?? 50,

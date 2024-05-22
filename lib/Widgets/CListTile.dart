@@ -30,6 +30,7 @@ class CListTile {
               Icons.arrow_forward_ios_rounded,
               size: 20,
             ),
+            onTap: () {},
           ),
         ),
       ],
